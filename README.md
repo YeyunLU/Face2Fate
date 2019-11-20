@@ -1,3 +1,19 @@
+# Milestone
+## Step 1:
+- collect new data
+- clean data
+- run SVM model
+
+## Step 2:
+- Neural network
+- feature select
+
+## Step 3:
+-  Neural network
+-  Model Analysis
+
+
+
 # :man_with_gua_pi_mao: 面相分析 Face reading ( facial feature classification ) 
 
 A physiognomy application which analysis people facial feature to
@@ -53,3 +69,9 @@ optional arguments:
                         input image
   -u URL, --url URL     input image url
 ```
+
+
+
+
+
+
