@@ -1,0 +1,6 @@
+dlib
+sklearn
+opencv-python
+numpy
+google-images-download==2.0.4
+imutils==0.4.3
