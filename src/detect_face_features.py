@@ -31,15 +31,32 @@ args = vars(ap.parse_args())
 
 def shape_to_numpy_array(shape, dtype="int"):
     # initialize the list of (x, y)-coordinates
-    coordinates = np.zeros((68, 2), dtype=dtype)
+    all_face = np.zeros((68, 2), dtype=dtype)
+    mouth_array = np.zeros((20, 2), dtype=dtype)
+    eye_array = np.zeros((12, 2), dtype=dtype)
+    eyebrow_array = np.zeros((10, 2), dtype=dtype)
+    nose_arry = np.zeros((9, 2), dtype=dtype)
+    jaw_array = np.zeros((17, 2), dtype=dtype)
+    data = {}
 
     # loop over the 68 facial landmarks and convert them
     # to a 2-tuple of (x, y)-coordinates
     for i in range(0, 68):
-        coordinates[i] = (shape.part(i).x, shape.part(i).y)
+        all_face[i] = (shape.part(i).x, shape.part(i).y)
+
+    jaw_array = all_face[:17, :]
+    eyebrow_array = all_face[17:27, :]
+    nose_arry = all_face[27:36, :]
+    eye_array = all_face[36:48, :]
+    mouth_array = all_face[48:, :]
+    data["jaw"] = jaw_array
+    data["nose"] = nose_arry
+    data["eyebrow"] = eyebrow_array
+    data["eye"] = eye_array
+    data["mouth"] = mouth_array
 
     # return the list of (x, y)-coordinates
-    return coordinates
+    return data
 
 
 def visualize_facial_landmarks(image, shape, colors=None, alpha=0.75):
@@ -103,8 +120,16 @@ for (i, rect) in enumerate(rects):
     # determine the facial landmarks for the face region, then
     # convert the landmark (x, y)-coordinates to a NumPy array
     shape = predictor(gray, rect)
-    shape = shape_to_numpy_array(shape)
 
-    output = visualize_facial_landmarks(image, shape)
-    cv2.imshow("Image", output)
-    cv2.waitKey(0)
+    # dict = {'jaw'     : jaw array,
+    #         'nose'    : nose array,
+    #         'eyebrow' : eyebrow array,
+    #         'eye'     : eye array,
+    #         'mouth'   : mouth array
+    #         }
+    all_face = shape_to_numpy_array(shape)
+
+    print(all_face)
+    #output = visualize_facial_landmarks(image, shape)
+    #cv2.imshow("Image", output)
+    #cv2.waitKey(0)
