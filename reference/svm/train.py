@@ -1,4 +1,4 @@
-# this code train the svm for classification
+# this code train the reference for classification
 
 from utils import *
 from sklearn import svm
@@ -10,7 +10,7 @@ from svmutil import *
 
 SAVE_PATH="data/trained_svms.pkl"
 SAVE_TRAIN_DATA_PATH = "data/train_data.pkl"
-LIBSVM_SVMS_PATH = "data/%s.svm"
+LIBSVM_SVMS_PATH = "data/%s.reference"
 LIBSVM_LABELS_PATH = "data/labels.txt"
 
 GET_CROSS_VAL = False  
@@ -28,7 +28,7 @@ if IS_BUILD_LIBSVM_MODEL:
     labels_file = open(LIBSVM_LABELS_PATH, 'w')
 
 for region_name, features in data.items():
-    print("training svm for %s      "% (region_name))
+    print("training reference for %s      "% (region_name))
 
 
     # split the data into training set and test set
@@ -85,8 +85,8 @@ for region_name, features in data.items():
 if IS_BUILD_LIBSVM_MODEL:
     labels_file.close()
     
-print("training svm... Done") 
+print("training reference... Done")
 
 
 joblib.dump(svms, SAVE_PATH)
-print("svm saved!")
+print("reference saved!")
