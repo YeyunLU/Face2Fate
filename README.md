@@ -20,7 +20,7 @@ Face images from 18 year old to 50 year old can be found on:
 - https://drive.google.com/file/d/1iQugexO8m2g6FNA-1sgADcpKEyCKiETm/view?usp=sharing
 
 
-# :man_with_gua_pi_mao: 面相分析 Face reading ( facial feature classification ) 
+# Reference
 
 A physiognomy application which analysis people facial feature to
 evaluates a person's characteristic, and then do the fortune-telling. 
