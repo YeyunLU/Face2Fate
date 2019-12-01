@@ -22,12 +22,6 @@ FACIAL_LANDMARKS_INDEXES = OrderedDict([
     ("Jaw", (0, 17))
 ])
 
-# construct the argument parser and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True,
-	help="path to facial landmark predictor")
-args = vars(ap.parse_args())
-
 
 def shape_to_numpy_array(shape, dtype="int"):
     # initialize the list of (x, y)-coordinates
@@ -45,27 +39,35 @@ def shape_to_numpy_array(shape, dtype="int"):
         all_face[i] = (shape.part(i).x, shape.part(i).y)
 
     jaw_array = all_face[:17, :]
-    jaw_array = np.vstack([jaw_array, [
-        np.max(jaw_array[:, 0]) - np.min(jaw_array[:, 0]),
-        np.max(jaw_array[:, 1]) - np.min(jaw_array[:, 1])]])
+    # jaw_array = np.vstack([jaw_array, [
+    #     np.max(jaw_array[:, 0]) - np.min(jaw_array[:, 0]),
+    #     np.max(jaw_array[:, 1]) - np.min(jaw_array[:, 1])]])
     eyebrow_array = all_face[17:27, :]
-    eyebrow_array = np.vstack([eyebrow_array, [
-        np.max(eyebrow_array[:, 0]) - np.min(eyebrow_array[:, 0]),
-        np.max(eyebrow_array[:, 1]) - np.min(eyebrow_array[:, 1])]])
     nose_array = all_face[27:36, :]
-    nose_array = np.vstack([nose_array, [np.max(nose_array[:, 0]) - np.min(nose_array[:, 0]),
-                           np.max(nose_array[:, 1]) - np.min(nose_array[:, 1])]])
     eye_array = all_face[36:48, :]
-    eye_array = np.vstack([eye_array, [np.max(eye_array[:, 0]) - np.min(eye_array[:, 0]),
-                          np.max(eye_array[:, 1]) - np.min(eye_array[:, 1])]])
     mouth_array = all_face[48:, :]
-    mouth_array = np.vstack([mouth_array, [np.max(mouth_array[:, 0]) - np.min(mouth_array[:, 0]),
-                np.max(mouth_array[:, 1]) - np.min(mouth_array[:, 1])]])
-    data["jaw"] = jaw_array.tolist()
-    data["nose"] = nose_array.tolist()
-    data["eyebrow"] = eyebrow_array.tolist()
-    data["eye"] = eye_array.tolist()
-    data["mouth"] = mouth_array.tolist()
+    jaw_list = jaw_array[:, 0].tolist()
+    jaw_list.extend(jaw_array[:, 1].tolist())
+    nose_list = nose_array[:, 0].tolist()
+    nose_list.extend(nose_array[:, 1].tolist())
+    eyebrow_list = eyebrow_array[:, 0].tolist()
+    eyebrow_list.extend(eyebrow_array[:, 1].tolist())
+    eye_list = eye_array[:, 0].tolist()
+    eye_list.extend(eye_array[:, 1].tolist())
+    mouth_list = mouth_array[:, 0].tolist()
+    mouth_list.extend(mouth_array[:,1].tolist())
+
+    data["jaw"] = jaw_list
+    data["nose"] = nose_list
+    data["eyebrow"] =  eyebrow_list
+    data["eye"] = eye_list
+    data["mouth"] = mouth_list
+
+    #data["jaw"].append(classify_jaw(jaw_array))
+    #data["nose"].append(classify_nose(nose_array))
+    #data["eyebrow"].append(classify_eyebrow(eyebrow_array[:, 1]))
+    #data["eye"].append(classify_eye(eye_array))
+    #data["mouth"].append(classify_mouth(mouth_array))
 
     # return the list of (x, y)-coordinates
     return data
@@ -117,9 +119,8 @@ def visualize_facial_landmarks(image, shape, colors=None, alpha=0.75):
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(args["shape_predictor"])
+predictor = dlib.shape_predictor("../data/shape_predictor_68_face_landmarks.dat")
 
-# load the input image, resize it, and convert it to grayscale
 ROOT_DIR = os.path.abspath(os.curdir)
 image_folder = os.path.join(ROOT_DIR,"images")
 jaw = []
@@ -127,14 +128,16 @@ nose =[]
 eye = []
 eyebrow =[]
 mouth = []
+idx = 0
 for img in os.listdir(image_folder):
+    print(idx)
+    idx+=1
     image_path = os.path.join(image_folder,img)
     # load the input image, resize it, and convert it to grayscale
     image = cv2.imread(image_path)
     image = imutils.resize(image, width=500)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-    # detect faces in the grayscale image
+    # detect faceas in the grayscale image
     rects = detector(gray, 1)
 
     # loop over the face detections
@@ -150,7 +153,7 @@ for img in os.listdir(image_folder):
         #         'mouth'   : mouth array
         #         }
         all_face = shape_to_numpy_array(shape)
-        all_face["jaw"].insert(0,img)
+        all_face["jaw"].insert(0, img)
         all_face["eye"].insert(0, img)
         all_face["mouth"].insert(0, img)
         all_face["eyebrow"].insert(0, img)
@@ -164,6 +167,9 @@ for img in os.listdir(image_folder):
         #output = visualize_facial_landmarks(image, shape)
         #cv2.imshow("Image", output)
         #cv2.waitKey(0)
+
+
+# save data
 list = [eyebrow, eye, nose, mouth, jaw]
 names = ["eyebrow", "eye", "nose", "mouth", "jaw"]
 for i in range(len(list)):
