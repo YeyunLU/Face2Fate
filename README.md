@@ -34,7 +34,7 @@ Face images from 18 year old to 50 year old can be found on:
    - nose
      - train 
        - Long
-       - Samll
+       - Small
        - Wide
      - test
    - mouse
