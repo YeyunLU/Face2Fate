@@ -18,8 +18,39 @@
 
 Face images from 18 year old to 50 year old can be found on: 
 - https://drive.google.com/file/d/1b6Vgn0fTQQKsvInQak4OLx8PpKtGl50M/view?usp=sharing
-
-
+- data
+  - eyebrow
+     - train 
+       - Arch
+       - Circle
+       - Straight
+     - test
+   - eye
+     - train 
+       - Big
+       - Silt
+       - Small
+     - test   
+   - nose
+     - train 
+       - Long
+       - Samll
+       - Wide
+     - test
+   - mouse
+     - train 
+       - Medium
+       - Small
+       - Thick
+     - test
+   - jaw
+     - train 
+       - Circle
+       - Oval
+       - Square
+       - Triangle
+     - test
+ 
 # Reference
 
 A physiognomy application which analysis people facial feature to
