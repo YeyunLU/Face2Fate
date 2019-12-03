@@ -21,34 +21,23 @@ Face images from 18 year old to 50 year old can be found on:
 - data
   - eyebrow
      - train 
-       - Arch
-       - Circle
-       - Straight
+       - Arch      Circle       Straight
      - test
    - eye
      - train 
-       - Big
-       - Silt
-       - Small
+       - Big       Silt       Small
      - test   
    - nose
      - train 
-       - Long
-       - Small
-       - Wide
+       - Long       Small      Wide
      - test
    - mouse
      - train 
-       - Medium
-       - Small
-       - Thick
+       - Medium      Small      Thick
      - test
    - jaw
      - train 
-       - Circle
-       - Oval
-       - Square
-       - Triangle
+       - Circle      Oval        Square        Triangle
      - test
  
 # Reference
