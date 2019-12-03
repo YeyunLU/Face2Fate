@@ -1,0 +1,96 @@
+{
+    "face_regions":
+    [
+        {
+            "name":"eyebrows",
+            "features":[
+                {
+                    "name":"Straight",
+                    "analysis":"Usually with great perseverance and courage. People with thick straight eyebrows are often strong-willed, courageous and stern. People with thin straight eyebrows are often clever, talented and shrewd."
+
+
+                },
+                {
+                    "name":"Arch",
+                    "analysis":"Energetic, not afraid of difficulties, brave and confident to innovate. But sometimes may be stubborn."
+                },
+                {
+                    "name":"Circle",
+                    "analysis":"Being mild, friendly and considerate, usually with good relationship with others. Have stronger feelings for art, but sometimes will be emotional and idealistic in real life."
+                }
+            ]
+        },
+        {
+            "name":"eyes",
+            "features":[
+                {
+                    "name":"Small",
+                    "analysis":"Be more rational, are more suitable for science research. Have their own ideas, not easily affected by others."
+                },
+                {
+                    "name":"Silt",
+                    "analysis":"Often with higher intelligence quotient. But sometimes may be suspicious to others."
+                },
+                {
+                    "name":"Big",
+                    "analysis":"Kind and compassionate, can be good friends to talk with. Good understanding of movie and arts, sometime overwhelmed by emotions."
+                }
+            ]
+        },
+        {
+            "name":"face",
+            "features":[
+                {
+                    "name":"Triangle",
+                    "analysis":"Be strict with others as well as themselves, do things carefully. They may seems to be not close to others. "
+                },
+                {
+                    "name":"Oval",
+                    "analysis":"More likely to have better improvement in their careers. They also spend more money and pay attention to quality of life."
+                },
+                {
+                    "name":"Square",
+                    "analysis":"Energetic, resolute, decisive and take great care of the people they like, but sometimes blindly advance."
+                },
+                {
+                    "name":"Circle",
+                    "analysis":"Kind, friendly and sympathetic. Usually have good relationship with friends. More likely to be attractive by other."
+                }
+            ]
+        },
+        {
+            "name":"mouth",
+            "features":[
+                {
+                    "name":"Small",
+                    "analysis":"A more introverted and conservative personality. They are often at a loss when encountering difficulties."
+                },
+                {
+                    "name":"Medium",
+                    "analysis":"Have good relationship with others and are kind of popular. Being luck for both career and wealth."
+                },
+                {
+                    "name":"Thick",
+                    "analysis":"Passionate and warm-hearted, emphasizing sensory stimuli, doing things practically and resentful, and less likely to use tricks."
+                }
+            ]
+        },
+        {
+            "name":"nose",
+            "features":[
+                {
+                    "name":"Wide",
+                    "analysis":"Decisive, energetic, and have the courage and talent, with a little speculative mentality. Good-minded and willing to work hard, but with strong self-esteem and considerable power, broad friendships and love for face, spare no effort in the pursuit of wealth."
+                },
+                {
+                    "name":"Long",
+                    "analysis":"People with long noses have deep thinking skills, but often think more and hesitate. I don't like to confide in my mind. I pay more attention to spiritual enrichment. I have a wide range of interests but are conservative. I am stable and lonely."
+                },
+                {
+                    "name":"Small",
+                    "analysis":"People with small noses are thoughtful and sensitive, have a conservative and peaceful personality, hesitate to act, have less ambition, and are relatively flat in middle age. Men must work harder at work, and women are slightly delayed in marriage some."
+                }
+            ]
+        }
+    ]
+}
