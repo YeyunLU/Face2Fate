@@ -79,6 +79,6 @@ data
 
 ## Example
 
-![Demo](picture/example.png)
-![Demo](picture/example2.JPG)
+![Demo](demo/example.png)
+![Demo](demo/example2.JPG)
 	
