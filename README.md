@@ -71,7 +71,7 @@ data
 
 ## Test on your image
 
-- Step 1: Choice one image you like and put it in the folder "demo\images\img"
+- Step 1: Choose one image you like and put it in the folder "demo\images\img"
 - Step 2: Change the input image path in demo jupyter file "demo\CNN_demo" or "demo\SVM_demo"
 - Step 3: Run the cells in demo jupyter file one by one to get your report
 
